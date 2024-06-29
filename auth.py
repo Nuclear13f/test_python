@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from flask_login import login_required, current_user, logout_user
+from flask_login import login_required, current_user, logout_user, login_user
 from model import users
 
 
@@ -20,9 +20,9 @@ def login():
     if request.method == 'POST':
         password = request.form.get('password')
         user = users.query.filter_by(login='Sergey').first()
-
         if user.password == password:
-            print('Есть такой юзер')
+            login_user(user, remember=True)
+            return render_template("home.html", user=current_user)
 
 
 
@@ -33,3 +33,4 @@ def logout():
     logout_user()
     print('un reg')
     return redirect(url_for('auth.login'))
+
