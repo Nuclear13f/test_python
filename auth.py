@@ -20,8 +20,7 @@ def login():
     if request.method == 'POST':
         password = request.form.get('password')
         user = users.query.filter_by(login='Sergey').first()
-        print(password)
-        print(user.password)
+
         if user.password == password:
             print('Есть такой юзер')
 
