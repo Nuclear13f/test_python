@@ -8,7 +8,7 @@ class Sett():
     def DATABASE_URL_psycopg(self):
         config = dotenv_values('.env')
 
-        return (f"postgresql+psycopg://{config['DB_USER']}:{config['DB_PASS']}@{config['DB_HOST']}:"
+        return (f"postgresql+psycopg://{config['DB_USER']}:{config['']}@{config['DB_HOST']}:"
                 f"{config['DB_PORT']}/{config['DB_NAME']}")
 
 settings = Sett()
